@@ -1,11 +1,11 @@
 ![Grasscutter](https://socialify.git.ci/Grasscutters/Grasscutter/image?description=1&forks=1&issues=1&language=1&logo=https%3A%2F%2Fs2.loli.net%2F2022%2F04%2F25%2FxOiJn7lCdcT5Mw1.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
-<div align="center"><img alt="Documention" src="https://img.shields.io/badge/Wiki-Grasscutter-blue?style=for-the-badge&link=https://github.com/Grasscutters/Grasscutter/wiki&link=https://github.com/Grasscutters/Grasscutter/wiki"> <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Grasscutters/Grasscutter?logo=java&style=for-the-badge"> <img alt="GitHub" src="https://img.shields.io/github/license/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Grasscutters/Grasscutter/Build?logo=github&style=for-the-badge"></div>
+<div align="center"><img alt="Documention" src="https://img.shields.io/badge/Wiki-Grasscutter-blue?style=for-the-badge&link=https://github.com/nigpo/GraduateShin/wiki&link=https://github.com/nigpo/GraduateShin/wiki"> <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Grasscutters/Grasscutter?logo=java&style=for-the-badge"> <img alt="GitHub" src="https://img.shields.io/github/license/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Grasscutters/Grasscutter/Build?logo=github&style=for-the-badge"></div>
 
 <div align="center"><a href="https://discord.gg/T5vZU6UyeG"><img alt="Discord - Grasscutter" src="https://img.shields.io/discord/965284035985305680?label=Discord&logo=discord&style=for-the-badge"></a></div>
 
 EN | [中文](README_zh-CN.md)
 
-**Attention:** We always welcome contributors to the project. Before adding your contribution, please carefully read our [Code of Conduct](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md).
+**Attention:** We always welcome contributors to the project. Before adding your contribution, please carefully read our [Code of Conduct](https://github.com/nigpo/GraduateShin/blob/stable/CONTRIBUTING.md).
 
 ## Current features
 
@@ -19,8 +19,6 @@ EN | [中文](README_zh-CN.md)
 * Inventory features (recieving items/characters, upgrading items/characters, etc)
 
 ## Quick setup guide
-
-**Note:** For support please join our [Discord](https://discord.gg/T5vZU6UyeG).
 
 ### Requirements
 
@@ -39,7 +37,7 @@ EN | [中文](README_zh-CN.md)
 1. Get `grasscutter.jar`
    - Download from [actions](https://nightly.link/Grasscutters/Grasscutter/workflows/build/stable/Grasscutter.zip)
    - [Build by yourself](#Building)
-2. Create a `resources` folder in the directory where grasscutter.jar is located and move your `BinOutput` and `ExcelBinOutput` folders there *(Check the [wiki](https://github.com/Grasscutters/Grasscutter/wiki) for more details how to get those.)*
+2. Create a `resources` folder in the directory where grasscutter.jar is located and move your `BinOutput` and `ExcelBinOutput` folders there *(Check the [wiki](https://github.com/nigpo/GraduateShin/wiki) for more details how to get those.)*
 3. Run Grasscutter with `java -jar grasscutter.jar`. **Make sure mongodb service is running as well.**
 
 ### Connecting with the client
@@ -81,7 +79,7 @@ Grasscutter uses Gradle to handle dependencies & building.
 ##### Windows
 
 ```shell
-git clone https://github.com/Grasscutters/Grasscutter.git
+git clone https://github.com/nigpo/GraduateShin.git
 cd Grasscutter
 .\gradlew.bat # Setting up environments
 .\gradlew jar # Compile
@@ -90,7 +88,7 @@ cd Grasscutter
 ##### Linux
 
 ```bash
-git clone https://github.com/Grasscutters/Grasscutter.git
+git clone https://github.com/nigpo/GraduateShin.git
 cd Grasscutter
 chmod +x gradlew
 ./gradlew jar # Compile

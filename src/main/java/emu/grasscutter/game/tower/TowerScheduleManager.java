@@ -1,12 +1,13 @@
 package emu.grasscutter.game.tower;
 
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.List;
+
 import emu.grasscutter.Grasscutter;
 import emu.grasscutter.data.GameData;
 import emu.grasscutter.data.def.TowerScheduleData;
 import emu.grasscutter.server.game.GameServer;
-
-import java.io.FileReader;
-import java.util.List;
 
 public class TowerScheduleManager {
     private final GameServer gameServer;
@@ -44,11 +45,28 @@ public class TowerScheduleManager {
     }
 
     public List<Integer> getScheduleFloors() {
-        return getCurrentTowerScheduleData().getSchedules().get(0).getFloorList();
+        TowerScheduleData data = getCurrentTowerScheduleData();
+        if(data == null)
+        {
+            Grasscutter.getLogger().warn("Tower data may not installed, just return default floor.");
+            return Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        }
+        TowerScheduleData.ScheduleDetail detail = getCurrentTowerScheduleData().getSchedules().get(0);
+        if(detail != null)
+        {
+            return detail.getFloorList();
+        }
+        Grasscutter.getLogger().warn("List may not installed, just return default floor.");
+        return Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
 
     public int getNextFloorId(int floorId){
         var entranceFloors = getCurrentTowerScheduleData().getEntranceFloorId();
+        if(entranceFloors == null)
+        {
+            Grasscutter.getLogger().warn("List may not installed, rollback to default.");
+            entranceFloors = Arrays.asList(1, 2, 3);
+        }
         var scheduleFloors = getScheduleFloors();
         var nextId = 0;
         // find in entrance floors first

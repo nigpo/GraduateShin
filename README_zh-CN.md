@@ -1,11 +1,11 @@
 ![Grasscutter](https://socialify.git.ci/Grasscutters/Grasscutter/image?description=1&forks=1&issues=1&language=1&logo=https%3A%2F%2Fs2.loli.net%2F2022%2F04%2F25%2FxOiJn7lCdcT5Mw1.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
-<div align="center"><img alt="Documention" src="https://img.shields.io/badge/Wiki-Grasscutter-blue?style=for-the-badge&link=https://github.com/Grasscutters/Grasscutter/wiki&link=https://github.com/Grasscutters/Grasscutter/wiki"> <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Grasscutters/Grasscutter?logo=java&style=for-the-badge"> <img alt="GitHub" src="https://img.shields.io/github/license/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Grasscutters/Grasscutter/Build?logo=github&style=for-the-badge"></div>
+<div align="center"><img alt="Documention" src="https://img.shields.io/badge/Wiki-Grasscutter-blue?style=for-the-badge&link=https://github.com/nigpo/GraduateShin/wiki&link=https://github.com/nigpo/GraduateShin/wiki"> <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Grasscutters/Grasscutter?logo=java&style=for-the-badge"> <img alt="GitHub" src="https://img.shields.io/github/license/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Grasscutters/Grasscutter?style=for-the-badge"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Grasscutters/Grasscutter/Build?logo=github&style=for-the-badge"></div>
 
 <div align="center"><a href="https://discord.gg/T5vZU6UyeG"><img alt="Discord - Grasscutter" src="https://img.shields.io/discord/965284035985305680?label=Discord&logo=discord&style=for-the-badge"></a></div>
 
 [EN](README.md) | 中文
 
-**注意:** 我们一直欢迎您成为该项目的贡献者。在添加您的代码之前，请仔细阅读我们的 [代码规范](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md).
+**注意:** 我们一直欢迎您成为该项目的贡献者。在添加您的代码之前，请仔细阅读我们的 [代码规范](https://github.com/nigpo/GraduateShin/blob/stable/CONTRIBUTING.md).
 
 ## 当前特性
 
@@ -39,7 +39,7 @@
 1. 获取 `grasscutter.jar`
    - 从 [actions](https://nightly.link/Grasscutters/Grasscutter/workflows/build/stable/Grasscutter.zip) 中下载
    - [自行构建](#构建)
-2. 在**grasscutter.jar** 所在目录中创建 `resources` 文件夹并将 `BinOutput` 和 `ExcelBinOutput` 放入其中 *(查看 [wiki](https://github.com/Grasscutters/Grasscutter/wiki) 了解更多)*
+2. 在**grasscutter.jar** 所在目录中创建 `resources` 文件夹并将 `BinOutput` 和 `ExcelBinOutput` 放入其中 *(查看 [wiki](https://github.com/nigpo/GraduateShin/wiki) 了解更多)*
 3. 通过命令 `java -jar grasscutter.jar` 来运行Grasscutter. **在此之前请确认MongoDB服务运行正常**
 
 ### 连接
@@ -63,7 +63,7 @@
     
     - Fiddler Classic: 运行Fiddler Classic, 在设置中开启 `解密https通信` 并将端口切换到除`8888` 以外的任意端口 (工具 -> 选项 -> 连接) 并加载 [此脚本](https://github.lunatic.moe/fiddlerscript).
       
-    - [Hosts文件](https://github.com/Grasscutters/Grasscutter/wiki/Running#traffic-route-map)
+    - [Hosts文件](https://github.com/nigpo/GraduateShin/wiki/Running#traffic-route-map)
     
 2. 设置代理为 `127.0.0.1:8080` 或其它你所设定的端口
 
@@ -81,7 +81,7 @@ Grasscutter 使用 Gradle 来处理依赖及构建.
 ##### Windows
 
 ```shell
-git clone https://github.com/Grasscutters/Grasscutter.git
+git clone https://github.com/nigpo/GraduateShin.git
 cd Grasscutter
 .\gradlew.bat # Setting up environments
 .\gradlew jar # Compile
@@ -90,7 +90,7 @@ cd Grasscutter
 ##### Linux
 
 ```bash
-git clone https://github.com/Grasscutters/Grasscutter.git
+git clone https://github.com/nigpo/GraduateShin.git
 cd Grasscutter
 chmod +x gradlew
 ./gradlew jar # Compile

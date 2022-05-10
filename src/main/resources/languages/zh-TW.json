@@ -36,7 +36,7 @@
       }
     },
     "status": {
-      "free_software": "Grasscutter 是免費開源軟體。如果你已經付錢了，那你可能被騙了。主頁：https://github.com/Grasscutters/Grasscutter",
+      "free_software": "Grasscutter 是免費開源軟體。如果你已經付錢了，那你可能被騙了。主頁：https://github.com/nigpo/GraduateShin",
       "starting": "正在啟動 Grasscutter...",
       "shutdown": "正在關閉...",
       "done": "加載完成！需要指令幫助請輸入 \"help\"",

@@ -140,7 +140,7 @@ publishing {
             pom {
                 name = 'Grasscutter'
                 description = 'A server software reimplementation for an anime game.'
-                url = 'https://github.com/Grasscutters/Grasscutter'
+                url = 'https://github.com/nigpo/GraduateShin'
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
@@ -162,7 +162,7 @@ publishing {
                 scm {
                     connection = 'scm:git:git@github.com:Grasscutters/Grasscutter.git'
                     developerConnection = 'scm:git:ssh://github.com:Grasscutters/Grasscutter.git'
-                    url = 'https://github.com/Grasscutters/Grasscutter'
+                    url = 'https://github.com/nigpo/GraduateShin'
                 }
             }
         }

@@ -1,6 +1,6 @@
 ## Description
 
-Please carefully read the [Contributing note](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md) and [Code of conduct](https://github.com/Grasscutters/Grasscutter/blob/development/CODE_OF_CONDUCT.md) before making any pull requests.
+Please carefully read the [Contributing note](https://github.com/nigpo/GraduateShin/blob/stable/CONTRIBUTING.md) and [Code of conduct](https://github.com/nigpo/GraduateShin/blob/development/CODE_OF_CONDUCT.md) before making any pull requests.
 And, **Do not make a pull request to merge into stable unless it is a hotfix. Use the development branch instead.**
 ## Issues fixed by this PR
 
@@ -18,5 +18,5 @@ And, **Do not make a pull request to merge into stable unless it is a hotfix. Us
 
 - [ ] My code follows the style guidelines of this project
 - [ ] My pull request is unique and no other pull requests have been opened for these changes
-- [ ] I have read the [Contributing note](https://github.com/Grasscutters/Grasscutter/blob/stable/CONTRIBUTING.md) and [Code of conduct](https://github.com/Grasscutters/Grasscutter/blob/development/CODE_OF_CONDUCT.md)
+- [ ] I have read the [Contributing note](https://github.com/nigpo/GraduateShin/blob/stable/CONTRIBUTING.md) and [Code of conduct](https://github.com/nigpo/GraduateShin/blob/development/CODE_OF_CONDUCT.md)
 - [ ] I am responsible for any copyright issues with my code if it occurs in the future.
