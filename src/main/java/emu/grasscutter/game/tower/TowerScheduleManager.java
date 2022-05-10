@@ -90,6 +90,12 @@ public class TowerScheduleManager {
     }
 
     public Integer getLastEntranceFloor() {
-        return getCurrentTowerScheduleData().getEntranceFloorId().get(getCurrentTowerScheduleData().getEntranceFloorId().size()-1);
+        TowerScheduleData data = getCurrentTowerScheduleData();
+        if(data != null)
+        {
+            List<Integer> integers = data.getEntranceFloorId();
+            return integers.get(integers.size()-1);
+        }
+        return 0;
     }
 }
