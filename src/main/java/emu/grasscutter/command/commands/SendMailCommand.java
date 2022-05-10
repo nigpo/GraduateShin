@@ -39,7 +39,7 @@ public final class SendMailCommand implements CommandHandler {
                     MailBuilder mailBuilder;
                     switch (args.get(0).toLowerCase()) {
                         case "help" : {
-                            CommandHandler.sendMessage(sender, translate(this.getClass().getAnnotation(Command.class).description()) + "\nUsage: " + this.getClass().getAnnotation(Command.class).usage());
+                            CommandHandler.sendMessage(sender, translate(sender, this.getClass().getAnnotation(Command.class).description()) + "\nUsage: " + this.getClass().getAnnotation(Command.class).usage());
                             return;
                         }
                         case "all" :{
@@ -50,7 +50,7 @@ public final class SendMailCommand implements CommandHandler {
                             if (DatabaseHelper.getPlayerById(Integer.parseInt(args.get(0))) != null) {
                                 mailBuilder = new MailBuilder(Integer.parseInt(args.get(0)), new Mail());
                             } else {
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.user_not_exist", args.get(0)));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.user_not_exist", args.get(0)));
                                 return;
                             }
                             break;
@@ -61,10 +61,10 @@ public final class SendMailCommand implements CommandHandler {
                     break;
                 }
                 case 2 :{
-                    CommandHandler.sendMessage(sender, translate("commands.sendMail.templates"));break;
+                    CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.templates"));break;
                 }
                 default :{
-                    CommandHandler.sendMessage(sender, translate("commands.sendMail.invalid_arguments"));
+                    CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.invalid_arguments"));
                     break;
                 }
             }
@@ -75,28 +75,28 @@ public final class SendMailCommand implements CommandHandler {
                 switch (args.get(0).toLowerCase()) {
                     case "stop" : {
                         mailBeingConstructed.remove(senderId);
-                        CommandHandler.sendMessage(sender, translate("commands.sendMail.sendCancel"));
+                        CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.sendCancel"));
                         return;
                     }
                     case "finish" : {
                         if (mailBuilder.constructionStage == 3) {
                             if (!mailBuilder.sendToAll) {
                                 Grasscutter.getGameServer().getPlayerByUid(mailBuilder.recipient, true).sendMail(mailBuilder.mail);
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.send_done", Integer.toString(mailBuilder.recipient)));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.send_done", Integer.toString(mailBuilder.recipient)));
                             } else {
                                 for (Player player : DatabaseHelper.getAllPlayers()) {
                                     Grasscutter.getGameServer().getPlayerByUid(player.getUid(), true).sendMail(mailBuilder.mail);
                                 }
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.send_all_done"));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.send_all_done"));
                             }
                             mailBeingConstructed.remove(senderId);
                         } else {
-                            CommandHandler.sendMessage(sender, translate("commands.sendMail.not_composition_end", getConstructionArgs(mailBuilder.constructionStage)));
+                            CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.not_composition_end", getConstructionArgs(mailBuilder.constructionStage, sender)));
                         }
                         return;
                     }
                     case "help" : {
-                        CommandHandler.sendMessage(sender, translate("commands.sendMail.please_use", getConstructionArgs(mailBuilder.constructionStage)));
+                        CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.please_use", getConstructionArgs(mailBuilder.constructionStage, sender)));
                         return;
                     }
                     default : {
@@ -104,21 +104,21 @@ public final class SendMailCommand implements CommandHandler {
                             case 0 : {
                                 String title = String.join(" ", args.subList(0, args.size()));
                                 mailBuilder.mail.mailContent.title = title;
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.set_title", title));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.set_title", title));
                                 mailBuilder.constructionStage++;
                                 break;
                             }
                             case 1 : {
                                 String contents = String.join(" ", args.subList(0, args.size()));
                                 mailBuilder.mail.mailContent.content = contents;
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.set_contents", contents));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.set_contents", contents));
                                 mailBuilder.constructionStage++;
                                 break;
                             }
                             case 2 : {
                                 String msgSender = String.join(" ", args.subList(0, args.size()));
                                 mailBuilder.mail.mailContent.sender = msgSender;
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.set_message_sender", msgSender));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.set_message_sender", msgSender));
                                 mailBuilder.constructionStage++;
                                 break;
                             }
@@ -132,21 +132,21 @@ public final class SendMailCommand implements CommandHandler {
                                         try {
                                             refinement = Integer.parseInt(args.get(3));
                                         } catch (NumberFormatException ignored) {
-                                            CommandHandler.sendMessage(sender, translate("commands.generic.invalid.itemRefinement"));
+                                            CommandHandler.sendMessage(sender, translate(sender, "commands.generic.invalid.itemRefinement"));
                                             return;
                                         }  // Fallthrough
                                     case 3: // <itemId|itemName> [amount] [level]
                                         try {
                                             lvl = Integer.parseInt(args.get(2));
                                         } catch (NumberFormatException ignored) {
-                                            CommandHandler.sendMessage(sender, translate("commands.generic.invalid.itemLevel"));
+                                            CommandHandler.sendMessage(sender, translate(sender, "commands.generic.invalid.itemLevel"));
                                             return;
                                         }  // Fallthrough
                                     case 2: // <itemId|itemName> [amount]
                                         try {
                                             amount = Integer.parseInt(args.get(1));
                                         } catch (NumberFormatException ignored) {
-                                            CommandHandler.sendMessage(sender, translate("commands.generic.invalid.amount"));
+                                            CommandHandler.sendMessage(sender, translate(sender, "commands.generic.invalid.amount"));
                                             return;
                                         }  // Fallthrough
                                     case 1: // <itemId|itemName>
@@ -154,16 +154,16 @@ public final class SendMailCommand implements CommandHandler {
                                             item = Integer.parseInt(args.get(0));
                                         } catch (NumberFormatException ignored) {
                                             // TODO: Parse from item name using GM Handbook.
-                                            CommandHandler.sendMessage(sender, translate("commands.generic.invalid.itemId"));
+                                            CommandHandler.sendMessage(sender, translate(sender, "commands.generic.invalid.itemId"));
                                             return;
                                         }
                                         break;
                                     default: // *No args*
-                                        CommandHandler.sendMessage(sender, translate("commands.give.usage"));
+                                        CommandHandler.sendMessage(sender, translate(sender, "commands.give.usage"));
                                         return;
                                 }
                                 mailBuilder.mail.itemList.add(new Mail.MailItem(item, amount, lvl));
-                                CommandHandler.sendMessage(sender, translate("commands.sendMail.send", Integer.toString(amount), Integer.toString(item), Integer.toString(lvl)));
+                                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.send", Integer.toString(amount), Integer.toString(item), Integer.toString(lvl)));
                                 break;
                             }
                         }
@@ -171,18 +171,18 @@ public final class SendMailCommand implements CommandHandler {
                     }
                 }
             } else {
-                CommandHandler.sendMessage(sender, translate("commands.sendMail.invalid_arguments_please_use", getConstructionArgs(mailBuilder.constructionStage)));
+                CommandHandler.sendMessage(sender, translate(sender, "commands.sendMail.invalid_arguments_please_use", getConstructionArgs(mailBuilder.constructionStage, sender)));
             }
         }
     }
 
     private String getConstructionArgs(int stage) {
         switch(stage) {
-            case 0 : return translate("commands.sendMail.title");
-            case 1 : return translate("commands.sendMail.message");
-            case 2 : return translate("commands.sendMail.sender");
-            case 3 : return translate("commands.sendMail.arguments");
-            default : return translate("commands.sendMail.error", Integer.toString(stage));
+            case 0 : return translate(sender, "commands.sendMail.title");
+            case 1 : return translate(sender, "commands.sendMail.message");
+            case 2 : return translate(sender, "commands.sendMail.sender");
+            case 3 : return translate(sender, "commands.sendMail.arguments");
+            default : return translate(sender, "commands.sendMail.error", Integer.toString(stage));
         }
     }
 
