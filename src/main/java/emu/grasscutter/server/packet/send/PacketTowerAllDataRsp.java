@@ -1,5 +1,7 @@
 package emu.grasscutter.server.packet.send;
 
+import emu.grasscutter.Grasscutter;
+import emu.grasscutter.data.def.TowerScheduleData;
 import emu.grasscutter.game.tower.TowerManager;
 import emu.grasscutter.game.tower.TowerScheduleManager;
 import emu.grasscutter.net.packet.BasePacket;
@@ -36,19 +38,55 @@ public class PacketTowerAllDataRsp extends BasePacket {
 						.getScheduleStartTime()))
 				);
 
-		TowerAllDataRsp proto = TowerAllDataRsp.newBuilder()
-				.setTowerScheduleId(towerScheduleManager.getCurrentTowerScheduleData().getScheduleId())
-				.addAllTowerFloorRecordList(recordList)
-				.setCurLevelRecord(TowerCurLevelRecord.newBuilder().setIsEmpty(true))
-				.setScheduleStartTime(DateHelper.getUnixTime(towerScheduleManager.getTowerScheduleConfig()
-						.getScheduleStartTime()))
-				.setNextScheduleChangeTime(DateHelper.getUnixTime(towerScheduleManager.getTowerScheduleConfig()
-						.getNextScheduleChangeTime()))
-				.putAllFloorOpenTimeMap(openTimeMap)
-				.setIsFinishedEntranceFloor(towerManager.canEnterScheduleFloor())
-				.build();
-		
-		this.setData(proto);
+		TowerScheduleData data = towerScheduleManager.getCurrentTowerScheduleData();
+		TowerAllDataRsp.Builder protoBuilder = TowerAllDataRsp.newBuilder();
+		if(data != null)
+		{
+			protoBuilder.setTowerScheduleId(data.getScheduleId());
+		}
+		else
+		{
+			protoBuilder.setTowerScheduleId(0);
+		}
+		try{
+			protoBuilder.addAllTowerFloorRecordList(recordList);
+		}catch (Exception e)
+		{
+			Grasscutter.getLogger().error("Fatal -> ", e);
+		}
+		try{
+			protoBuilder.setCurLevelRecord(TowerCurLevelRecord.newBuilder().setIsEmpty(true));
+		}catch (Exception e)
+		{
+			Grasscutter.getLogger().error("Fatal -> ", e);
+		}
+		try{
+			protoBuilder.setScheduleStartTime(DateHelper.getUnixTime(towerScheduleManager.getTowerScheduleConfig()
+					.getScheduleStartTime()));
+		}catch (Exception e)
+		{
+			Grasscutter.getLogger().error("Fatal -> ", e);
+		}
+		try{
+			protoBuilder.setNextScheduleChangeTime(DateHelper.getUnixTime(towerScheduleManager.getTowerScheduleConfig()
+					.getNextScheduleChangeTime()));
+		}catch (Exception e)
+		{
+			Grasscutter.getLogger().error("Fatal -> ", e);
+		}
+		try{
+			protoBuilder.putAllFloorOpenTimeMap(openTimeMap);
+		}catch (Exception e)
+		{
+			Grasscutter.getLogger().error("Fatal -> ", e);
+		}
+		try{
+			protoBuilder.setIsFinishedEntranceFloor(towerManager.canEnterScheduleFloor());
+		}catch (Exception e)
+		{
+			Grasscutter.getLogger().error("Fatal -> ", e);
+		}
+		this.setData(protoBuilder.build());
 	}
 
 	private List<TowerLevelRecordOuterClass.TowerLevelRecord> buildFromPassedLevelMap(Map<Integer, Integer> map){

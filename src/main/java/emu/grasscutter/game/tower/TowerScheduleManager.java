@@ -26,7 +26,6 @@ public class TowerScheduleManager {
     public synchronized void load(){
         try (FileReader fileReader = new FileReader(Grasscutter.getConfig().DATA_FOLDER + "TowerSchedule.json")) {
             towerScheduleConfig = Grasscutter.getGsonFactory().fromJson(fileReader, TowerScheduleConfig.class);
-
         } catch (Exception e) {
             Grasscutter.getLogger().error("Unable to load tower schedule config.", e);
         }
