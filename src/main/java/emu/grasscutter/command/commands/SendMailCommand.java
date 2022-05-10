@@ -176,7 +176,7 @@ public final class SendMailCommand implements CommandHandler {
         }
     }
 
-    private String getConstructionArgs(int stage) {
+    private String getConstructionArgs(int stage, Player sender) {
         switch(stage) {
             case 0 : return translate(sender, "commands.sendMail.title");
             case 1 : return translate(sender, "commands.sendMail.message");
