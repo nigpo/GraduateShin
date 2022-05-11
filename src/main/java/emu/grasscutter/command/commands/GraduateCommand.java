@@ -23,7 +23,7 @@ public class GraduateCommand extends GiveArtifactCommand {
             }
             else
             {
-                CommandHandler.sendMessage(sender, Language.translate("commands.execution.need_target"));
+                CommandHandler.sendMessage(null, Language.translate("commands.execution.need_target"));
                 return;
             }
             String[][] graduateData = new String[][]{
@@ -151,8 +151,12 @@ public class GraduateCommand extends GiveArtifactCommand {
             for(String[] item : graduateData)
             {
                 ArrayList<String> passingList = new ArrayList<>(Arrays.asList(item));
-                super.execute(sender, toWho, passingList);
+                if(!executeInternal(sender, toWho, passingList, false))
+                {
+                    CommandHandler.sendMessage(sender, "添加圣遗物" + item[0] + " 的时候出错");
+                }
             }
+            CommandHandler.sendMessage(sender, "成功添加毕业圣遗物。");
         } catch (Exception e) {
             Grasscutter.getLogger().debug("You can not be graduated...", e);
         }

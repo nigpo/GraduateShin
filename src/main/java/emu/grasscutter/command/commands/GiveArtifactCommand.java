@@ -113,14 +113,20 @@ public class GiveArtifactCommand implements CommandHandler {
 
 	@Override
 	public void execute(Player sender, Player targetPlayer, List<String> args) {
+		executeInternal(sender, targetPlayer, args, true);
+	}
+
+	protected boolean executeInternal(Player sender, Player targetPlayer, List<String> args, boolean noiseOrSilent) {
 		// Sanity checks
 		if (targetPlayer == null) {
-			CommandHandler.sendMessage(sender, translate(sender, "commands.execution.need_target"));
-			return;
+			if(noiseOrSilent)
+				CommandHandler.sendMessage(sender, translate(sender, "commands.execution.need_target"));
+			return false;
 		}
 		if (args.size() < 2) {
-			CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.usage"));
-			return;
+			if(noiseOrSilent)
+				CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.usage"));
+			return false;
 		}
 
 		// Get the artifact piece ID from the arguments.
@@ -128,14 +134,16 @@ public class GiveArtifactCommand implements CommandHandler {
 		try {
 			itemId = Integer.parseInt(args.remove(0));
 		} catch (NumberFormatException ignored) {
-			CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.id_error"));
-			return;
+			if(noiseOrSilent)
+				CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.id_error"));
+			return false;
 		}
 
 		ItemData itemData = GameData.getItemDataMap().get(itemId);
 		if (itemData.getItemType() != ItemType.ITEM_RELIQUARY) {
-			CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.id_error"));
-			return;
+			if(noiseOrSilent)
+				CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.id_error"));
+			return false;
 		}
 
 		// Get the main stat from the arguments.
@@ -155,8 +163,9 @@ public class GiveArtifactCommand implements CommandHandler {
 		}
 
 		if (mainPropId == -1) {
-			CommandHandler.sendMessage(sender, translate(sender, "commands.execution.argument_error"));
-			return;
+			if(noiseOrSilent)
+				CommandHandler.sendMessage(sender, translate(sender, "commands.execution.argument_error"));
+			return false;
 		}
 
 		// Get the level from the arguments.
@@ -194,8 +203,8 @@ public class GiveArtifactCommand implements CommandHandler {
 				appendPropIdList.addAll(Collections.nCopies(n, appendPropId));
 			});
 		} catch (Exception ignored) {
-			CommandHandler.sendMessage(sender, translate(sender, "commands.execution.argument_error"));
-			return;
+			if(noiseOrSilent)CommandHandler.sendMessage(sender, translate(sender, "commands.execution.argument_error"));
+			return false;
 		}
 
 		// Create item for the artifact.
@@ -206,7 +215,8 @@ public class GiveArtifactCommand implements CommandHandler {
 		item.getAppendPropIdList().addAll(appendPropIdList);
 		targetPlayer.getInventory().addItem(item, ActionReason.SubfieldDrop);
 
-		CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.success", Integer.toString(itemId), Integer.toString(targetPlayer.getUid())));
+		if(noiseOrSilent)CommandHandler.sendMessage(sender, translate(sender, "commands.giveArtifact.success", Integer.toString(itemId), Integer.toString(targetPlayer.getUid())));
+		return true;
 	}
 }
 
