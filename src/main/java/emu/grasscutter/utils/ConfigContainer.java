@@ -190,6 +190,7 @@ public class ConfigContainer {
         public int[] welcomeEmotes = {2007, 1002, 4010};
         public String welcomeMessage = "欢迎来玩正版OP";
         public JoinOptions.Mail welcomeMail = new JoinOptions.Mail();
+        public Boolean ENABLE_JOIN_GAME_MESSAGE = false;
 
         public static class Mail {
             public String title = "开局就送极品橙装";
